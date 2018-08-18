@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://rm-2ze212y801r8bu5lao.mysql.rds.aliyuncs.com/adms_test?characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+    username: root
+    password: Yuantai123
+  redis:
+    port: 6379
+    host: 10.9.8.211
+    password:
+    timeout: 5000
