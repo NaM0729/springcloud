@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 数据库驱动 -->
+    <classPathEntry    location="mysql-connector-java-5.1.38.jar"/>
+    <context id="DB2Tables"    targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- 数据库连接信息 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://rm-2ze212y801r8bu5lao.mysql.rds.aliyuncs.com/adms_test?useSSL=false" userId="root" password="Yuantai123"></jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 生成模型所在目录包名 -->
+        <javaModelGenerator targetPackage="com.sportsxdata.dms_device_service.server.model" targetProject="src">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- 生成映射文件所在目录包名 -->
+        <sqlMapGenerator targetPackage="com.sportsxdata.dms_device_service.server.dao.mapper" targetProject="src">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 生成DAO层目录包名 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.sportsxdata.dms_device_service.server.dao" targetProject="src">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!-- 指定哪些表需要映射,并且表名对应的类名是什么 -->
+       
+         <table tableName="adms_tarining_data" domainObjectName="TariningData" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+
+    </context>
+</generatorConfiguration>
+
+

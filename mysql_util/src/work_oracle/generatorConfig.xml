@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 数据库驱动 -->
+    <classPathEntry    location="ojdbc14-10.2.0.4.0.jar"/>
+    <context id="DB2Tables"    targetRuntime="MyBatis3">
+		<property name="javaFileEncoding" value="UTF-8"/>
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- 数据库连接信息 -->
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@192.168.131.10:1521:crm" userId="SMSP" password="smsp123"></jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 生成模型所在目录包名 -->
+        <javaModelGenerator targetPackage="cn.sharingmobile.model" targetProject="src">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- 生成映射文件所在目录包名 -->
+        <sqlMapGenerator targetPackage="cn.sharingmobile.model.mapper" targetProject="src">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 生成DAO层目录包名 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.sharingmobile.dao" targetProject="src">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!-- 指定哪些表需要映射,并且表名对应的类名是什么 -->
+        <table tableName="MS_BUSINESS_ITEM" domainObjectName="MsBusinessItem" enableCountByExample="false" enableUpdateByExample="false"
+		enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		
+		<table tableName="MS_MTMSG_REQUEST" domainObjectName="MsMtMsgRequest" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		
+		<table tableName="MS_MTMSG_REQUEST_HIS" domainObjectName="MsMtMsgRequestHis" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		
+		<table tableName="MS_REPORT_INFO" domainObjectName="MsReportInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		
+		<table tableName="MS_REQUEST_LOG" domainObjectName="MsRequestLog" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		
+    </context>
+</generatorConfiguration>
