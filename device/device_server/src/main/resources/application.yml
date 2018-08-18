@@ -1,0 +1,40 @@
+eureka:
+  client:
+    service-url:
+      defalutZone: http://localhost:8761/eureka
+  instance:
+    hostname: device
+spring:
+  application:
+    name: device
+  profiles:
+     active: dev
+mybatis:
+  type-aliases-package: com.demo.device_server.model
+  mapper-locations: classpath*:mapper/*.xml
+
+---
+
+  ##########################################################
+  ################### dev  ###################
+  ##########################################################
+spring:
+  profiles: dev
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://rm-2ze212y801r8bu5lao.mysql.rds.aliyuncs.com/adms_test?characterEncoding=utf8&useSSL=false
+    username: root
+    password: Yuantai123
+
+---
+
+   ##########################################################
+   ###################  pro  ###################
+   ##########################################################
+spring:
+  profiles: pro
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    username: root
+    password: Yuantai123
+    url: jdbc:mysql://rm-2ze212y801r8bu5lao.mysql.rds.aliyuncs.com/yt_adms?characterEncoding=utf8&useSSL=false

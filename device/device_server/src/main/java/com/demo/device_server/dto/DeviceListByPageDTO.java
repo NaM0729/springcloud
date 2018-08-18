@@ -1,5 +1,5 @@
 package com.demo.device_server.dto;
-import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 @Data
@@ -17,8 +17,7 @@ public class DeviceListByPageDTO {
 
     private String model;
 
-    @JsonProperty("athleticsName")
-    private String athleticsId;
+    private String athleticsName;
 
     private String serialNumber;
 

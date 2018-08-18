@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sportsxdata.dms_device_service.server.dao.DeviceMapper" >
+  <resultMap id="BaseResultMap" type="com.sportsxdata.dms_device_service.server.model.Device" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="model" property="model" jdbcType="VARCHAR" />
+    <result column="serial_number" property="serialNumber" jdbcType="VARCHAR" />
+    <result column="identifier" property="identifier" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="adms_coach_id" property="admsCoachId" jdbcType="VARCHAR" />
+    <result column="adms_athlete_id" property="admsAthleteId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, type, model, serial_number, identifier, status, adms_coach_id, adms_athlete_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from adms_device
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from adms_device
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sportsxdata.dms_device_service.server.model.Device" >
+    insert into adms_device (id, type, model, 
+      serial_number, identifier, status, 
+      adms_coach_id, adms_athlete_id)
+    values (#{id,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{model,jdbcType=VARCHAR}, 
+      #{serialNumber,jdbcType=VARCHAR}, #{identifier,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{admsCoachId,jdbcType=VARCHAR}, #{admsAthleteId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sportsxdata.dms_device_service.server.model.Device" >
+    insert into adms_device
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="model != null" >
+        model,
+      </if>
+      <if test="serialNumber != null" >
+        serial_number,
+      </if>
+      <if test="identifier != null" >
+        identifier,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="admsCoachId != null" >
+        adms_coach_id,
+      </if>
+      <if test="admsAthleteId != null" >
+        adms_athlete_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null" >
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNumber != null" >
+        #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="identifier != null" >
+        #{identifier,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="admsCoachId != null" >
+        #{admsCoachId,jdbcType=VARCHAR},
+      </if>
+      <if test="admsAthleteId != null" >
+        #{admsAthleteId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sportsxdata.dms_device_service.server.model.Device" >
+    update adms_device
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null" >
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNumber != null" >
+        serial_number = #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="identifier != null" >
+        identifier = #{identifier,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="admsCoachId != null" >
+        adms_coach_id = #{admsCoachId,jdbcType=VARCHAR},
+      </if>
+      <if test="admsAthleteId != null" >
+        adms_athlete_id = #{admsAthleteId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sportsxdata.dms_device_service.server.model.Device" >
+    update adms_device
+    set type = #{type,jdbcType=VARCHAR},
+      model = #{model,jdbcType=VARCHAR},
+      serial_number = #{serialNumber,jdbcType=VARCHAR},
+      identifier = #{identifier,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      adms_coach_id = #{admsCoachId,jdbcType=VARCHAR},
+      adms_athlete_id = #{admsAthleteId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="getDeviceCountByCoachId"
+          parameterType="com.sportsxdata.dms_device_service.server.dto.DeviceListByPageDTO"
+          resultType="java.lang.Integer">
+    select COUNT(1)
+    from adms_device
+    <where>
+      adms_coach_id=#{coachId}
+      <if test='model != null and model != "" '>
+        model = #{model}
+      </if>
+      <if test='athleticsId != null and athleticsId != "" '>
+        adms_athlete_id = #{athleticsId}
+      </if>
+    </where>
+  </select>
+
+  <select id="getDeviceList"
+          parameterType="com.sportsxdata.dms_device_service.server.dto.DeviceListByPageDTO"
+          resultType="com.sportsxdata.dms_device_service.server.model.Device">
+    select id, type,model,serial_number as serialNumber,identifier,
+      adms_coach_id as admsCoachId,adms_athlete_id as admsAthleteId
+    from adms_device
+    <where>
+      adms_coach_id = #{coachId}
+      <if test='model != null and model != "" '>
+        model = #{model}
+      </if>
+      <!--<if test='athleticsId != null and athleticsId != "" '>-->
+        <!--adms_athlete_id = #{athleticsId}-->
+      <!--</if>-->
+      <if test='serialNumber != null and serialNumber != "" '>
+        serial_number = #{serialNumber}
+      </if>
+    </where>
+    order by identifier ASC
+    limit #{startSize},#{pageRowNum}
+  </select>
+
+  <select id="getDeviceListByCoachId"
+          resultType="com.sportsxdata.dms_device_service.server.model.Device">
+    select id, type,model,serial_number as serialNumber,identifier,
+      adms_coach_id as admsCoachId,status,adms_athlete_id as admsAthleteId
+    from adms_device
+    where
+      adms_coach_id = #{coachId}
+    order by identifier ASC
+  </select>
+
+  <select id="selectDeviceCountBySerialNumber"
+          parameterType="com.sportsxdata.dms_device_service.server.model.Device"
+          resultType="com.sportsxdata.dms_device_service.server.model.Device">
+    select id, type,model,serial_number as serialNumber,identifier,
+      adms_coach_id as admsCoachId,status,adms_athlete_id as admsAthleteId
+    from adms_device
+    WHERE 1=1
+      and adms_coach_id = #{admsCoachId}
+      and model = #{model}
+      and serial_number = #{serialNumber}
+  </select>
+
+  <select id="selectDeviceCountByIdentifier"
+          parameterType="com.sportsxdata.dms_device_service.server.model.Device"
+          resultType="java.lang.Integer">
+    select count(1)
+    from adms_device
+    where 1=1
+      and adms_coach_id = #{admsCoachId}
+      and identifier = #{identifier}
+  </select>
+</mapper>
