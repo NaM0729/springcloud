@@ -15,8 +15,6 @@ public class ByteArrayToHexStrDecoder extends ByteToMessageDecoder {
     protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> list) throws Exception {
         if(byteBuf.readableBytes() == 35 ){
             logger.debug("ByteToIntegerDecoder decode msg is " + byteBuf.readableBytes());
-            // Read integer from inbound ByteBuf
-            // add to the List of decodec messages
             byte[] bytes = new byte[byteBuf.readableBytes()];
             byteBuf.readBytes(bytes);
             String s = ConvertUtil.byteArrayToHexStr(bytes);

@@ -7,7 +7,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.ReferenceCountUtil;
 
-public class HelloClientHandler extends ChannelInboundHandlerAdapter {
+public class DemoClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
@@ -15,12 +15,11 @@ public class HelloClientHandler extends ChannelInboundHandlerAdapter {
             ByteBuf buf = (ByteBuf) msg;
             byte[] data = new byte[buf.readableBytes()];
             buf.readBytes(data);
-            System.out.println("Client：" + new String(data).trim());
+            System.out.println("server say：" + new String(data).trim());
         } finally {
             ReferenceCountUtil.release(msg);
         }
     }
-
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
@@ -31,6 +30,6 @@ public class HelloClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         super.channelActive(ctx);
-        ctx.writeAndFlush(Unpooled.copiedBuffer("客户端连接服务端\r\n".getBytes()));
+        ctx.writeAndFlush(Unpooled.copiedBuffer("客户端已经连接服务端\r\n".getBytes()));
     }
 }

@@ -10,12 +10,12 @@ import io.netty.handler.codec.Delimiters;
  * @Description
  * @date 2019-11-29 14:40
  */
-public class SocketServerInitializer extends ChannelInitializer<SocketChannel> {
+public class DemoServerInitializer extends ChannelInitializer<SocketChannel> {
 
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
         socketChannel.pipeline()
                 .addLast("framer", new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()))
-                .addLast(new SocketServerHandler());
+                .addLast(new DemoServerHandler());
     }
 }

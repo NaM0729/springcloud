@@ -8,7 +8,7 @@ public class HexStrToByteArrayEncoder extends MessageToByteEncoder<String> {
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, String s, ByteBuf byteBuf) throws Exception {
         byteBuf.writeBytes(ConvertUtil.hexStrToByteArray(s));
-        System.out.println(byteBuf.readableBytes());
+        System.out.println("encode:"+ byteBuf.readableBytes());
     }
 }
 
