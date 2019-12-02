@@ -34,7 +34,9 @@ public class DemoClient {
                     continue;
 
                 }
-                channel.writeAndFlush(Unpooled.copiedBuffer((line + "\r\n").getBytes()));
+                // 当没有设置编码格式时需要转换为字节输出
+//                channel.writeAndFlush(Unpooled.copiedBuffer((line + "\r\n").getBytes()));
+                channel.writeAndFlush(line + "\r\n");
             }
 
 
