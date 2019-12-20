@@ -1,10 +1,10 @@
-package com.test.nettydemo.tcp.server.thread;
+package com.test.nettydemo.tcp.thread;
 
-import com.test.nettydemo.util.ByteArrayToHexStrDecoder;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
+import io.netty.handler.codec.string.StringDecoder;
 
 public class SocketServerInitializer extends ChannelInitializer<SocketChannel> {
 
@@ -17,7 +17,9 @@ public class SocketServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-        pipeline.addLast("decoder", new ByteArrayToHexStrDecoder() );
-        pipeline.addLast(bussinessGroup, SocketServerHandler.INSTANCE);
+        pipeline.addLast("decoder", new StringDecoder())
+                .addLast("encoder", new StringDecoder())
+                .addLast(SocketServerHandler.INSTANCE);
+
     }
 }

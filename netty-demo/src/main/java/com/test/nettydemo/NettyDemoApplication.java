@@ -1,6 +1,8 @@
 package com.test.nettydemo;
 
 import com.test.nettydemo.tcp.server.DemoServer;
+import com.test.nettydemo.millionlinks.Client;
+import com.test.nettydemo.millionlinks.Server;
 import com.test.nettydemo.udp.server.UdpServer;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,10 +26,24 @@ public class NettyDemoApplication implements CommandLineRunner {
         return new UdpServer();
     }
 
+    @Bean
+    public Server getServer() {
+        return new Server();
+    }
+
+    @Bean
+    public Client getClient() {
+        return new Client();
+    }
+
     @Override
     public void run(String... args) throws Exception {
 //        getHelloServer().start();
 
-        getUdpServer().run(8886);
+//        getUdpServer().run(8886);
+
+//        new Server().start(8000, 100);
+
+        getClient().start(8000, 100);
     }
 }

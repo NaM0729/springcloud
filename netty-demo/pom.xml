@@ -45,6 +45,11 @@
             <artifactId>netty-all</artifactId>
             <version>4.1.12.Final</version>
         </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-transport</artifactId>
+            <version>4.1.43.Final</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -53,6 +58,56 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <!--<plugin>-->
+                <!--<artifactId>maven-assembly-plugin</artifactId>-->
+                <!--<version>2.4</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>build-server</id>-->
+                        <!--<configuration>-->
+                            <!--<appendAssemblyId>false</appendAssemblyId>-->
+                            <!--<archive>-->
+                                <!--<manifest>-->
+                                    <!--<mainClass>com.test.nettydemo.thread.Server</mainClass>-->
+                                <!--</manifest>-->
+                            <!--</archive>-->
+                            <!--<descriptorRefs>-->
+                                <!--<descriptorRef>jar-with-dependencies</descriptorRef>-->
+                            <!--</descriptorRefs>-->
+                            <!--<finalName>server</finalName>-->
+                            <!--<outputDirectory>e:/data</outputDirectory>-->
+                        <!--</configuration>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>single</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+
+                    <!--<execution>-->
+                        <!--<id>build-client</id>-->
+                        <!--<configuration>-->
+                            <!--<appendAssemblyId>false</appendAssemblyId>-->
+                            <!--<archive>-->
+                                <!--<manifest>-->
+                                    <!--<mainClass>com.test.nettydemo.thread.Client</mainClass>-->
+                                <!--</manifest>-->
+                                <!--<manifestEntries>-->
+                                    <!--<Class-Path>.</Class-Path>-->
+                                <!--</manifestEntries>-->
+                            <!--</archive>-->
+                            <!--<descriptorRefs>-->
+                                <!--<descriptorRef>jar-with-dependencies</descriptorRef>-->
+                            <!--</descriptorRefs>-->
+                            <!--<finalName>client</finalName>-->
+                            <!--<outputDirectory>e:/data</outputDirectory>-->
+                        <!--</configuration>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>single</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 
