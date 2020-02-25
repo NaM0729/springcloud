@@ -54,13 +54,13 @@ public class ChatClient {
             }).sync();
 
 //            // 控制台输入
-//            Scanner scanner = new Scanner(System.in);
-////            BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-//
-//            while (true) {
-//                String next = scanner.next();
-//                future.channel().writeAndFlush(next + "\n");
-//            }
+            Scanner scanner = new Scanner(System.in);
+//            BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+
+            while (true) {
+                String next = scanner.next();
+                future.channel().writeAndFlush(next + "\n");
+            }
 
             // 阻塞通道关闭 用于非控制台输入
 //            future.channel().closeFuture().sync();

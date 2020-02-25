@@ -93,7 +93,7 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println(ctx.channel().remoteAddress() + "下线 \n");
+        System.out.println(ctx.channel().remoteAddress() + "上线 \n");
         Channel incoming = ctx.channel();
         for (Channel channel : channels) {
             if (channel != incoming) {
