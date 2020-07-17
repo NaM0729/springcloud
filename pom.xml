@@ -4,16 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.demo</groupId>
-    <artifactId>springcloud</artifactId>
+    <artifactId>webdemo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>springcloud</name>
+    <name>webdemo</name>
     <description>Demo project for Spring Boot</description>
-    <modules>
-        <module>eureka_server</module>
-        <module>eureka_client</module>
-    </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>

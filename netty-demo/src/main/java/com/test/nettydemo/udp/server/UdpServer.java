@@ -30,6 +30,6 @@ public class UdpServer {
 
     public static void main(String[] args) {
         UdpServer udpServer = new UdpServer();
-        udpServer.run(8888);
+        udpServer.run(8080);
     }
 }
