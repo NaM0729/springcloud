@@ -1,8 +1,7 @@
 package com.zyn;
 
-import com.zyn.redisTemplate.publishSubscribe.SendMessage;
-import com.zyn.redisTemplate.redisMQ.MessageReceiveMQ;
-import com.zyn.redisTemplate.redisMQ.SendMessageMQ;
+import com.zyn.redis.redisMQ.StringRedisTemplate.MessageReceiveMQ;
+import com.zyn.redis.redisMQ.StringRedisTemplate.SendMessageMQ;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;

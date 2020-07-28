@@ -1,11 +1,7 @@
-package com.zyn.redisTemplate.redisMQ;
+package com.zyn.redis.redisMQ.StringRedisTemplate;
 
-import org.springframework.data.redis.connection.Message;
-import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.listener.KeyspaceEventMessageListener;
-import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;

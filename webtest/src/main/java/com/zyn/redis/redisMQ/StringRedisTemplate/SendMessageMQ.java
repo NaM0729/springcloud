@@ -1,4 +1,4 @@
-package com.zyn.redisTemplate.redisMQ;
+package com.zyn.redis.redisMQ.StringRedisTemplate;
 
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -32,6 +32,9 @@ public class SendMessageMQ {
 
     }
 
+    /**
+     * 该方法存入数据时会出现存不进去问题。。未解决！！！！！！！！！！！！！
+     */
     private void sendM() {
         while (true) {
             for (int i = 0; i < 500; i++) {

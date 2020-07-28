@@ -1,4 +1,4 @@
-package com.zyn.redisTemplate.publishSubscribe;
+package com.zyn.redis.publishSubscribe;
 
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
