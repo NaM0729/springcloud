@@ -17,7 +17,7 @@ spring:
   redis:
     #数据库索引
     database: 0
-    host: 192.168.74.131
+    host: 192.168.74.132
     port: 6379
     password:
     #连接超时时间

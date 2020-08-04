@@ -1,7 +1,5 @@
 package com.zyn;
 
-import com.zyn.redis.redisMQ.StringRedisTemplate.MessageReceiveMQ;
-import com.zyn.redis.redisMQ.StringRedisTemplate.SendMessageMQ;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
@@ -24,11 +22,7 @@ public class WebTestRun {
 //        SendMessage sendMessage = new SendMessage();
 //        sendMessage.sendMess();
 
-        // list做消息队列
-        SendMessageMQ sendMessageMQ = new SendMessageMQ();
-        sendMessageMQ.sendMess();
-        MessageReceiveMQ messageReceiveMQ = new MessageReceiveMQ();
-        messageReceiveMQ.doHandleMessage();
+        // list做消息队列  开启SendMessageMQ、MessageReceiveMQ中的@PostConstruct
     }
 
 }

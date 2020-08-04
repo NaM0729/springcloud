@@ -1,11 +1,10 @@
 package com.zyn.redis.redisMQ.StringRedisTemplate;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -18,15 +17,10 @@ import java.util.List;
 @Component
 public class MessageReceiveMQ {
 
-    @Resource
-    StringRedisTemplate stringRedisTemplateAuto;
-    static StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    StringRedisTemplate stringRedisTemplate;
 
-    @PostConstruct
-    public void Instance() {
-        stringRedisTemplate = stringRedisTemplateAuto;
-    }
-
+//    @PostConstruct
     public void doHandleMessage() {
         new Thread(() -> handMe()).start();
     }

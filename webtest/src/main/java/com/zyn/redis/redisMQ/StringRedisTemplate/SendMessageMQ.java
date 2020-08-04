@@ -20,13 +20,7 @@ public class SendMessageMQ {
     @Resource
     StringRedisTemplate stringRedisTemplate;
 
-    private static StringRedisTemplate STRING_REDIS_TEMPLATE;
-
-    @PostConstruct
-    public void init() {
-        STRING_REDIS_TEMPLATE = stringRedisTemplate;
-    }
-
+//    @PostConstruct
     public void sendMess() {
         new Thread(() -> sendM()).start();
 
@@ -38,7 +32,7 @@ public class SendMessageMQ {
     private void sendM() {
         while (true) {
             for (int i = 0; i < 500; i++) {
-                RedisConnection connection = STRING_REDIS_TEMPLATE.getConnectionFactory().getConnection();
+                RedisConnection connection = stringRedisTemplate.getConnectionFactory().getConnection();
                 connection.rPush("syslog".getBytes(), LocalDateTime.now().toString().getBytes());
             }
             try {
