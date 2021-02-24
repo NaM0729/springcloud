@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.util.Objects;
 
 /**
  * @author zyn
@@ -31,7 +32,7 @@ public class TailerUtil {
             @Override
             public void handle(String line) {
                 if (line.contains("lease")) {
-                    log.info("写入的数据：{}" + line);
+                    log.info("写入的数据：{}", line);
                 }
             }
         };
