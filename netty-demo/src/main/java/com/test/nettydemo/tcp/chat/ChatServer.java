@@ -31,7 +31,7 @@ public class ChatServer {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
                             socketChannel.pipeline()
-                                    .addLast("frame", new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()))                                    .addLast("decoder", new StringDecoder())
+                                    .addLast("frame", new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter())).addLast("decoder", new StringDecoder())
                                     .addLast("encode", new StringEncoder())
                                     .addLast("decode", new StringDecoder())
                                     .addLast(new ChatServerHandler());
